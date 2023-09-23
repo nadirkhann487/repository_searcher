@@ -1,0 +1,20 @@
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<h1>Github Repository Searcher!</h1>
+
+<%= form_with(url: github_repositories_search_path, method: :get) do |form| %>
+  <%= form.label(:search, 'Please enter a repository name:') %>
+  <%= form.text_field(:search, value: params[:search]) %>
+  <%= form.submit("Search") %>
+<% end %>
+
+<br />
+<ul>
+  <% @repos.each do |repo| %>
+    <li><%= link_to repo.full_name, repo.html_url, target: "_blank" %></li>
+  <% end %>
+</ul>

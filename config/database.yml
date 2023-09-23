@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  port: 5432
+  #username: repo_searcher
+  #password: 123456
+
+development:
+  <<: *default
+  database: respository_searcher_development
+
+test:
+  <<: *default
+  database: respository_searcher_test
+
+production:
+  <<: *default
+  database: respository_searcher_production
